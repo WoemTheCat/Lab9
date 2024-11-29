@@ -38,17 +38,17 @@ public class MyService extends Service {
                             h++;
                         }
                     }
+                    Intent i = new Intent("MyMessage");
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("H", h);
+                    bundle.putInt("M", m);
+                    bundle.putInt("S", s);
+
+                    i.putExtras(bundle);
+
+                    sendBroadcast(i);
                 }
-                Intent i = new Intent("MyMessage");
-
-                Bundle bundle = new Bundle();
-                bundle.putInt("H", h);
-                bundle.putInt("M", m);
-                bundle.putInt("S", s);
-
-                i.putExtras(bundle);
-
-                sendBroadcast(i);
             }
         }).start();
         return START_STICKY;
